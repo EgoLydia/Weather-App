@@ -27,6 +27,27 @@ export default {
   data(){
     return{
       api_key: '582f58018e28370809832a36ffc87799'
+  name: "App",
+  data() {
+    return {
+      api_key: "582f58018e28370809832a36ffc87799",
+      url_base: 'https://api.openweathermap.org/data/2.5/',
+      query: '',
+      weather: {}
+    };
+  },
+  methods :{
+    fetchWeather(e){
+      if (e.key =='Enter'){
+        fetch (`${this.url_base}weather?q=${this.query}&units=metric&APPID=${this.api_key}`)
+        .then(res => {
+          return res.json();
+        }).then(this.setResults);
+      }
+    },
+    setResults(results){
+      this.weather = results;
+    },
     }
 }
 </script>
