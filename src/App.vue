@@ -48,6 +48,19 @@ export default {
     setResults(results){
       this.weather = results;
     },
+    dateBuilder(){
+      let d = new Date();
+      let months = ["January", "February", "March", "April", "May", "June", "July", 
+      "August", "September", "October", "November", "December"];
+      let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+      let day = days[d.getDay()];
+      let date = d.getDate();
+      let month = months[d.getMonth()];
+      let year = d.getFullYear();
+
+      return `${day} ${date} ${month} ${year}`;
+
     }
 }
 </script>
@@ -67,7 +80,11 @@ body{
   transition: 0.4s;
 }
 
-main{
+#app .warm{
+  background-image: url(./assets/warm-bg.jpg);
+}
+
+main {
   min-height: 100vh;
   padding: 25px;
   background-image: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.75));
